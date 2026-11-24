@@ -44,12 +44,17 @@ set-resources:
     partitionFlag: "--partition=copy"
   stage_s3_bucket:
     partitionFlag: "--partition=copy"
+  submit_assembly_to_ena:
+    runtime: "1h"
   transfer_raw_reads:
     partitionFlag: "--partition=copy"
 singularity-args: -B ${PWD},${TMPDIR},/scratch
   -H $(mktemp -d)
   --pwd ${PWD}
   --cleanenv --containall --writable-tmpfs
+  --env ARDC_APPID=${ARDC_APPID}
+  --env ARDC_BASE_URL=${ARDC_BASE_URL}
+  --env ARDC_SHARED_SECRET=${ARDC_SHARED_SECRET}
   --env BPA_APIKEY=${BPA_APIKEY}
   --env BPA_MIRROR_PASSWD=${BPA_MIRROR_PASSWD}
   --env BPA_MIRROR_USER=${BPA_MIRROR_USER}
