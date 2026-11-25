@@ -47,6 +47,7 @@ set-resources:
   submit_assembly_to_ena:
     runtime: "1h"
   transfer_raw_reads:
+    runtime: "1d"
     partitionFlag: "--partition=copy"
 singularity-args: -B ${PWD},${TMPDIR},/scratch
   -H $(mktemp -d)
